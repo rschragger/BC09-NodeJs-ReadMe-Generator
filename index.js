@@ -41,7 +41,81 @@ function getLicenses(obj) {
   return x
 }
 
+function lister(commaText) {
+  if (!commaText) { return '' };
+  if (commaText.includes(',')) {
+    return "- " + commaText.split(',').join('\n- ').replace('  ', ' ')
+  } else { return commaText }
+}
 
+
+function createFileText(answers) {
+  return `# ${answers.projectName}
+
+  ## Description
+  
+  ${licInfo[answers.licenseOrg][0].licenseBadge}
+  
+  ${answers.description}
+  
+  ## Table of Contents
+  
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Credits](#credits)
+  - [License](#license)
+  - [Features](#features)
+      - [Contributions](#contributions)
+  - [Tests](#tests)
+  - [Questions](#questions)
+      - [Contacts](#contacts)
+  
+  ## Installation
+  
+  ${lister(answers.installationInst)}
+  
+  ## Usage
+  
+  ${lister(answers.usage)}
+  
+  ## Credits
+  
+  ${lister(answers.collaborators)}
+
+  ${lister(answers.languagesListed.toString().replace('Other',''))}
+  ${lister(answers.languagesListedOther)}
+  
+  ${lister(answers.thirdPartyAssets)}
+  
+  ${lister(answers.tutorials)}
+  
+  ## License
+  
+  This application is licensed under ${answers.licenseOrg}
+  ${licInfo[answers.licenseOrg][0].licenseName}
+  
+  ## Features
+  
+  ${lister(answers.features)}
+  
+  ### Contributions
+  
+  ${lister(answers.contributions)}
+  
+  ## Tests
+  
+  ${lister(answers.tests)}
+  
+  ## Questions
+  
+  ${lister(answers.projQuestions)}
+  
+  ### Contacts
+  
+  You can reach me for additional questions at:
+  [${answers.gitHubID} GitHub page](https://github.com/${answers.gitHubID})
+`
+}
 
 // TODO: Create an array of questions for user input
 const questions = [
@@ -53,12 +127,17 @@ const questions = [
   {
     type: 'input',
     name: 'gitHubID',
-    message: 'What is your GitHub ID?',
+    message: 'What is your GitHub ID?\n(just the ID only please)',
   },
   {
     type: 'input',
     name: 'projectName',
     message: `What is your Project's Name?`,
+  },
+  {
+    type: 'input',
+    name: 'description',
+    message: `Please describe your Project`,
   },
   {
     type: 'checkbox',
@@ -68,7 +147,7 @@ const questions = [
   },
   {
     type: 'input',
-    message: 'What other languages are being used in this project?(Please use commas between languages)',
+    message: 'What other languages are being used in this project?\n(Please use commas between languages)',
     name: 'languagesListedOther',
     when(answers) {
       return answers.languagesListed.includes('Other')
@@ -83,57 +162,60 @@ const questions = [
   {
     type: 'input',
     name: 'installationInst',
-    message: `What are the Project's installation instruction?(Please use commas between steps)`,
+    message: `What are the Project's installation instruction?\n(Please use commas between steps)`,
   },
+ /* */
   {
     type: 'input',
     name: 'usage',
-    message: `What are the Project's usage instruction?(Please use commas between steps)`,
+    message: `What are the Project's usage instruction?\n(Please use commas between steps)`,
   },
   {
     type: 'input',
     name: 'collaborators',
-    message: `Who else collaborated on this project?(Please use commas between person)`,
+    message: `Who else collaborated on this project?\n(Please use commas between person)`,
   },
   {
     type: 'input',
     name: 'thirdPartyAssets',
-    message: `What third party assets were used in this project?(Please use commas between assets)`,
+    message: `What third party assets were used in this project?\n(Please use commas between assets)`,
   },
   {
     type: 'input',
     name: 'tutorials',
-    message: `What tutorials were referenced in this project?(Please use commas between references)`,
+    message: `What tutorials were referenced in this project?\n(Please use commas between references)`,
   },
   {
     type: 'input',
     name: 'features',
-    message: `Please list special features in this project?(Please use commas between features)`,
+    message: `Please list special features in this project?\n(Please use commas between features)`,
   },
   {
     type: 'input',
     name: 'contributions',
-    message: `Please list special features in this project?(Please use commas between features)`,
+    message: `Please explain how other may make contributions to this project?\n(Please use commas between instructions)`,
   },
   {
     type: 'input',
     name: 'tests',
-    message: `Please list tests for this project?(Please use commas between tests)`,
+    message: `Please list tests for this project?\n(Please use commas between tests)`,
   },
   {
     type: 'input',
     name: 'projQuestions',
-    message: `Please list questions for this project?(Please use commas between questions)`,
+    message: `Please list questions for this project?\n(Please use commas between questions)`,
   },
-
+/**/
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(answers) {
-  const filename = `ReadMe_${answers.projectName.toLowerCase().split(' ').join('')}.json`;
+  console.log(answers)
+  const filename = `ReadMe_${answers.projectName.toLowerCase().split(' ').join('')}.md`;
+  const fileText = createFileText(answers);
 
-  fs.writeFile(filename, JSON.stringify(answers, null, '\t'), (err) =>
-    err ? console.log(err) : console.log('Success!')
+  //  fs.writeFile(filename, JSON.stringify(answers, null, '\t'), (err) =>
+  fs.writeFile(filename, fileText, (err) => err ? console.log(err) : console.log('Success!')
   );
 }
 
