@@ -17,6 +17,25 @@ function getLicenses(obj) {
   return x
 }
 
+// Try to make a series of alternate questions
+function followUpQsLicense(){
+  let whenQuestion;
+for(let q = 0; q<licInfo.length; q++) {
+ whenQuestion +=
+  {
+    type: 'list',
+  message: 'What license version would you prefer?',
+  name: 'license',
+  choices: licInfo[q].licenseName,
+
+  when(answers) {
+    return answers.licenseOrg === licInfo[q]
+  },
+  
+}
+return whenQuestion
+}
+
 // TODO: Create an array of questions for user input
 const questions = [
   // {
@@ -47,25 +66,30 @@ const questions = [
     choices: Object.keys(licInfo),
   },
   //Use a when statement https://stackoverflow.com/questions/56412516/conditional-prompt-rendering-in-inquirer
-  {
-    type: 'list',
-    message: 'What license version would you prefer?',
-    name: 'license',
-    choices: Object.keys(getLicenses( licInfo[answers.licenseOrg])),
-    when: (answers) => {
-      let licOrgList = licInfo[answers.licenseOrg];
-      if (licOrgList.length > 0) {
-        return true
-      } else { return false };
-    }
-  },
+//   { 
+//     for(let q = 0; q<licInfo.length; q++) {
+
+//     type: 'list',
+//     message: 'What license version would you prefer?',
+//     name: 'license',
+//     choices: licInfo[q].licenseName,
+//     //choices: Object.keys(getLicenses(licInfo[await answers.licenseOrg])),
+
+//     when(answers) {
+//       return answers.licenseOrg === licInfo[q]
+//     },
+//   }
+
+// },
+followUpQsLicense()
+}
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(data) {
-  const filename = `ReadMe_${data.projectName.toLowerCase().split(' ').join('')}.json`;
+function writeToFile(answers) {
+  const filename = `ReadMe_${answers.projectName.toLowerCase().split(' ').join('')}.json`;
 
-  fs.writeFile(filename, JSON.stringify(data, null, '\t'), (err) =>
+  fs.writeFile(filename, JSON.stringify(answers, null, '\t'), (err) =>
     err ? console.log(err) : console.log('Success!')
   );
 }
@@ -74,11 +98,14 @@ function writeToFile(data) {
 function init() {
   inquirer
     .prompt(questions)
-    .then((data) => {
+    .then((answers) => {
 
-      writeToFile(data);
-     
-    });
+      writeToFile(answers);
+
+    })
+    .catch((err => {
+      console.log(err)
+    }))
 }
 
 // Function call to initialize app
