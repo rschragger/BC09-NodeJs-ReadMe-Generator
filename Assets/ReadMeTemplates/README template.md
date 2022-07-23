@@ -1,9 +1,11 @@
 # ${projectTitle}
+<!-- Description, Table of Contents, Installation, Usage, License, Contributing, Tests, and Questions -->
 
 ## Description
 
-${Description}
+${licenseBadge}
 
+${description}
 
 ## Table of Contents
 
@@ -11,6 +13,11 @@ ${Description}
 - [Usage](#usage)
 - [Credits](#credits)
 - [License](#license)
+- [Features](#features)
+    - [Contributions](#contributions)
+- [Tests](#tests)
+- [Questions](#questions)
+    - [Contacts](#contacts)
 
 ## Installation
 
@@ -18,33 +25,39 @@ ${installationInst}
 
 ## Usage
 
-${Usage}
+${usage}
 
 ## Credits
 
 ${collaborators}
 
-$(thirdPartyAssets)
+${thirdPartyAssets}
 
 ${tutorials}
 
 ## License
 
-${license}
-
-
-## Badges
-
-${Badges}
+This application is licensed under ${licenseOrg}
+${licenseName}
 
 ## Features
 
 ${features}
 
-## How to Contribute
+### Contributions
+<!-- If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer. -->
 
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
+${contributions}
 
 ## Tests
 
 ${tests}
+
+## Questions
+
+${questions}
+
+### Contacts
+
+You can reach me for additional questions at:
+${gitHubID}

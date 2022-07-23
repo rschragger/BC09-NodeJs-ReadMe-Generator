@@ -7,6 +7,30 @@ const licInfo = require('./assets/js/licenseInfo.js')
 
 //Variables
 var finalFileText = '';
+var projectTitle = [];
+var features = [];
+var contributions = [];
+var tests = [];
+var projQuestions = [];
+var gitHubID = [];
+
+/* --- List of variables in the ReadMe doc -----
+${projectTitle}
+${description}
+${installationInst}
+${usage}
+${collaborators}
+${thirdPartyAssets}
+${tutorials}
+${licenseBadge}
+${licenseOrg}
+${licenseName}
+${features}
+${contributions}
+${tests}
+${questions}
+${gitHubID}
+ ----- ----- ----- ----- */
 
 //Functions ---------
 function getLicenses(obj) {
@@ -17,72 +41,91 @@ function getLicenses(obj) {
   return x
 }
 
-// Try to make a series of alternate questions
-function followUpQsLicense(){
-  let whenQuestion;
-for(let q = 0; q<licInfo.length; q++) {
- whenQuestion +=
-  {
-    type: 'list',
-  message: 'What license version would you prefer?',
-  name: 'license',
-  choices: licInfo[q].licenseName,
 
-  when(answers) {
-    return answers.licenseOrg === licInfo[q]
-  },
-  
-}
-return whenQuestion
-}
 
 // TODO: Create an array of questions for user input
 const questions = [
-  // {
-  //   type: 'input',
-  //   name: 'fullName',
-  //   message: 'What is your full name? (Name Surname)',
-  // },
   {
     type: 'input',
-    name: 'gitHubName',
+    name: 'fullName',
+    message: 'What is your full name? (Name Surname)',
+  },
+  {
+    type: 'input',
+    name: 'gitHubID',
     message: 'What is your GitHub ID?',
   },
   {
     type: 'input',
     name: 'projectName',
-    message: 'What is your Project Name?',
+    message: `What is your Project's Name?`,
   },
-  // {
-  //   type: 'checkbox',
-  //   message: 'What languages are being used in this project?',
-  //   name: 'languagesListed',
-  //   choices: ['HTML', 'CSS', 'JavaScript', 'MySQL', 'Other'],
-  // },
+  {
+    type: 'checkbox',
+    message: 'What languages are being used in this project?',
+    name: 'languagesListed',
+    choices: ['HTML', 'CSS', 'JavaScript', 'MySQL', 'Other'],
+  },
+  {
+    type: 'input',
+    message: 'What other languages are being used in this project?(Please use commas between languages)',
+    name: 'languagesListedOther',
+    when(answers) {
+      return answers.languagesListed.includes('Other')
+    },
+  },
   {
     type: 'list',
     message: 'What license will be used for this project?',
     name: 'licenseOrg',
     choices: Object.keys(licInfo),
   },
-  //Use a when statement https://stackoverflow.com/questions/56412516/conditional-prompt-rendering-in-inquirer
-//   { 
-//     for(let q = 0; q<licInfo.length; q++) {
+  {
+    type: 'input',
+    name: 'installationInst',
+    message: `What are the Project's installation instruction?(Please use commas between steps)`,
+  },
+  {
+    type: 'input',
+    name: 'usage',
+    message: `What are the Project's usage instruction?(Please use commas between steps)`,
+  },
+  {
+    type: 'input',
+    name: 'collaborators',
+    message: `Who else collaborated on this project?(Please use commas between person)`,
+  },
+  {
+    type: 'input',
+    name: 'thirdPartyAssets',
+    message: `What third party assets were used in this project?(Please use commas between assets)`,
+  },
+  {
+    type: 'input',
+    name: 'tutorials',
+    message: `What tutorials were referenced in this project?(Please use commas between references)`,
+  },
+  {
+    type: 'input',
+    name: 'features',
+    message: `Please list special features in this project?(Please use commas between features)`,
+  },
+  {
+    type: 'input',
+    name: 'contributions',
+    message: `Please list special features in this project?(Please use commas between features)`,
+  },
+  {
+    type: 'input',
+    name: 'tests',
+    message: `Please list tests for this project?(Please use commas between tests)`,
+  },
+  {
+    type: 'input',
+    name: 'projQuestions',
+    message: `Please list questions for this project?(Please use commas between questions)`,
+  },
 
-//     type: 'list',
-//     message: 'What license version would you prefer?',
-//     name: 'license',
-//     choices: licInfo[q].licenseName,
-//     //choices: Object.keys(getLicenses(licInfo[await answers.licenseOrg])),
-
-//     when(answers) {
-//       return answers.licenseOrg === licInfo[q]
-//     },
-//   }
-
-// },
-followUpQsLicense()
-}
 ];
 
 // TODO: Create a function to write README file
