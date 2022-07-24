@@ -20,51 +20,62 @@
   
   ## Installation
   
-  inst1
+  Installation Instructions: inst1
   
   ## Usage
   
-  - use1
+  Usage Instructions:
+- use1
 - use2
+</p>
   
   ## Credits
   
-  cllab
+  Collaborators cllab
 
-  - HTML
+  Languages
+- HTML
 - CSS
-- 
-  - C##
+- C##
 - Java
+</p>
+  <!-- undefined
+- C##
+- Java
+</p>-->
   
-  3rd party
+  Third Party Assets 3rd party
   
-  - tute1
+  Tutorials
+- tute1
 - tute2
+</p>
   
   ## License
   
   This application is licensed under Apache
+
   Apache 2.0 License
   
   ## Features
-  
-  features
+   features
   
   ### Contributions
   
-  contribute
+  Contribution instruction: contribute
   
   ## Tests
   
-  - test1
+- test1
 - test2
+</p>
   
   ## Questions
   
-  - q1
+- q1
 - q2
 - q3
+</p>
   
   ### Contacts
   

@@ -41,16 +41,18 @@ function getLicenses(obj) {
   return x
 }
 
-function lister(commaText) {
+function lister(commaText, preMessage) {
   if (!commaText) { return '' };
   if (commaText.includes(',')) {
-    return "- " + commaText.split(',').join('\n- ').replace('  ', ' ')
-  } else { return commaText }
+    //Need to end the list https://stackoverflow.com/questions/18313462/github-markdown-wont-end-a-list
+    return preMessage + "\n- " + commaText.split(',').join('\n- ').replace('  ', ' ') + "\n</p>"
+  } else { return preMessage + ' ' + commaText }
 }
 
 
 function createFileText(answers) {
-  return `# ${answers.projectName}
+  return '' +
+    `# ${answers.projectName}
 
   ## Description
   
@@ -72,43 +74,39 @@ function createFileText(answers) {
   
   ## Installation
   
-  ${lister(answers.installationInst)}
+  ${lister(answers.installationInst, "Installation Instructions:")}
   
   ## Usage
   
-  ${lister(answers.usage)}
+  ${lister(answers.usage, "Usage Instructions:")}
   
   ## Credits
   
-  ${lister(answers.collaborators)}
+  ${lister(answers.collaborators, "Collaborators")}
 
-  ${lister(answers.languagesListed.toString().replace('Other',''))}
-  ${lister(answers.languagesListedOther)}
+  ${lister(answers.languagesListed.toString().replace('Other', '') + answers.languagesListedOther, "Languages")}
   
-  ${lister(answers.thirdPartyAssets)}
+  ${lister(answers.thirdPartyAssets, "Third Party Assets")}
   
-  ${lister(answers.tutorials)}
+  ${lister(answers.tutorials, "Tutorials")}
   
   ## License
   
-  This application is licensed under ${answers.licenseOrg}
+  This application is licensed under ${answers.licenseOrg}\n
   ${licInfo[answers.licenseOrg][0].licenseName}
   
   ## Features
-  
-  ${lister(answers.features)}
+  ${lister(answers.features, '')}
   
   ### Contributions
   
-  ${lister(answers.contributions)}
+  ${lister(answers.contributions, "Contribution guidelines:")}
   
   ## Tests
-  
-  ${lister(answers.tests)}
+  ${lister(answers.tests, '')}
   
   ## Questions
-  
-  ${lister(answers.projQuestions)}
+  ${lister(answers.projQuestions, '')}
   
   ### Contacts
   
@@ -164,7 +162,7 @@ const questions = [
     name: 'installationInst',
     message: `What are the Project's installation instruction?\n(Please use commas between steps)`,
   },
- /* */
+  /* */
   {
     type: 'input',
     name: 'usage',
@@ -205,12 +203,12 @@ const questions = [
     name: 'projQuestions',
     message: `Please list questions for this project?\n(Please use commas between questions)`,
   },
-/**/
+  /**/
 ];
 
 // TODO: Create a function to write README file
 function writeToFile(answers) {
-  console.log(answers)
+  //console.log(answers)
   const filename = `ReadMe_${answers.projectName.toLowerCase().split(' ').join('')}.md`;
   const fileText = createFileText(answers);
 
