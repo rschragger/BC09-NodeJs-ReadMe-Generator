@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const licInfo = require('./assets/js/licenseInfo.js')
 
+const open = require('open');
 
 
 //Variables
@@ -42,7 +43,7 @@ function getLicenses(obj) {
 }
 
 function lister(commaText, preMessage) {
-  if (!commaText) { return '' };
+  if (!commaText || commaText === undefined) { return '' };
   if (commaText.includes(',')) {
     //Need to end the list https://stackoverflow.com/questions/18313462/github-markdown-wont-end-a-list
     return preMessage + "\n- " + commaText.split(',').join('\n- ').replace('  ', ' ') + "\n</p>"
@@ -84,7 +85,7 @@ function createFileText(answers) {
   
   ${lister(answers.collaborators, "Collaborators")}
 
-  ${lister(answers.languagesListed.toString().replace('Other', '') + answers.languagesListedOther, "Languages")}
+  ${lister(answers.languagesListed.toString().replace('Other', '') + lister(answers.languagesListedOther,''), "Languages")}
   
   ${lister(answers.thirdPartyAssets, "Third Party Assets")}
   
@@ -213,8 +214,29 @@ function writeToFile(answers) {
   const fileText = createFileText(answers);
 
   //  fs.writeFile(filename, JSON.stringify(answers, null, '\t'), (err) =>
-  fs.writeFile(filename, fileText, (err) => err ? console.log(err) : console.log('Success!')
-  );
+  fs.writeFile(filename, fileText, (err) => err ? console.log(err) : openReadMe()
+  )
+  //open file
+  function openReadMe(){
+    // https://stackoverflow.com/questions/9781218/how-to-change-node-jss-console-font-color
+    console.log('\x1b[31m','Your ReadMe file has been created.\n','\x1b[0m')
+  inquirer
+    .prompt({
+      type: 'confirm',
+      name: 'openFileYN',
+      message: `Would you like to open your new ReadMe file?`,
+      // default:'Y'
+    })
+    .then((confirm) => {
+      open(filename);
+
+      /* fs.open does not work as expected, used npm 'open' from https://stackoverflow.com/questions/62150879/fs-open-does-not-open-desired-file-in-nodejs
+      //console.log('openFileYN: ' + confirm.openFileYN)
+      if (confirm.openFileYN === true) {
+        fs.open(filename, 'rs+', function (err, f) { console.log('error: ' + err); });
+      }*/
+    })}
+
 }
 
 // TODO: Create a function to initialize app
