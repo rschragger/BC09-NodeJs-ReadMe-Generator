@@ -1,0 +1,32 @@
+Demo Answers
+
+Reeve Schragger
+
+rschragger
+
+BC09-NodeJs-ReadMe-Generator
+
+This project uses Node JS to write a comprehensive ReadMe file for a project from a series of prompts to the user. If a user doesn't enter a reply, the ReadMe will still leave a section so that the information can be written in manually later if necessary.
+
+other languages:
+
+Node JS
+
+Fork/Clone the project to your directory, Use the command line to get to the directory (i.e. `cd ./[your directory]` ), Run `npm install` to install all the packages
+
+
+Use the command line to get to the directory (`cd ./[your directory]` ,Enter `node index.js` in the command line to run the Javascript file, Answer questions in the command line interface as prompted
+
+***No Collaborators
+
+`Inquirer` module(Node), `fs` module(Node), `open` module(Node)
+
+https://www.markdownguide.org,https://stackoverflow.com/, https://www.geeksforgeeks.org/, https://pakstech.com/blog/inquirer-js/, https://talyian.github.io/ansicolors/
+
+Badges for licenses are included in the description, The contents items are hyperlinked to their headings, Sections are left in even if empty - in case user wants to manually add information later, ReadMe file is opened into default program after it is generated so users can check and manually edit, Colours are used to divide information in prompts and help guide users
+
+As this is a student program it is unlikely to be continued- however please see contact detail below if you want to get in touch with developer
+
+***No tests
+
+Why is project name added to the ReadMe filename?, 	This is because the program is used to create ReadMe's for a variety of projects and this might cause overwriting of other projects' files, Are there future fixes you might want to add?, 	We would like to make the license badges more complex with a choice of badge within organisation. We have the data but need to break up the questions and this will create a lot more complexity

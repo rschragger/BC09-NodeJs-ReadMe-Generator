@@ -74,14 +74,17 @@ function createFileText(answers) {
       - [Contacts](#contacts)
   
   ## Installation
+  ---
   
   ${lister(answers.installationInst, "Installation Instructions:")}
   
   ## Usage
+  ---
   
   ${lister(answers.usage, "Usage Instructions:")}
   
   ## Credits
+  ---
   
   ${lister(answers.collaborators, "Collaborators")}
 
@@ -92,24 +95,30 @@ function createFileText(answers) {
   ${lister(answers.tutorials, "Tutorials")}
   
   ## License
+  ---
   
   This application is licensed under ${answers.licenseOrg}\n
   ${licInfo[answers.licenseOrg][0].licenseName}
   
   ## Features
+  ---
   ${lister(answers.features, '')}
   
   ### Contributions
+  ---
   
   ${lister(answers.contributions, "Contribution guidelines:")}
   
   ## Tests
+  ---
   ${lister(answers.tests, '')}
   
   ## Questions
+  ---
   ${lister(answers.projQuestions, '')}
   
   ### Contacts
+  ---
   
   You can reach me for additional questions at:
   [${answers.gitHubID} GitHub page](https://github.com/${answers.gitHubID})
@@ -126,7 +135,7 @@ const questions = [
   {
     type: 'input',
     name: 'gitHubID',
-    message: 'What is your GitHub ID?\n(just the ID only please)',
+    message: 'What is your GitHub ID?\n\x1b[36m(just the ID only please)',
   },
   {
     type: 'input',
@@ -146,7 +155,7 @@ const questions = [
   },
   {
     type: 'input',
-    message: 'What other languages are being used in this project?\n(Please use commas between languages)',
+    message: 'What other languages are being used in this project?\n\x1b[36m(Please use commas between languages)',
     name: 'languagesListedOther',
     when(answers) {
       return answers.languagesListed.includes('Other')
@@ -161,48 +170,48 @@ const questions = [
   {
     type: 'input',
     name: 'installationInst',
-    message: `What are the Project's installation instruction?\n(Please use commas between steps)`,
+    message: `What are the Project's installation instruction?\n\x1b[36m(Please use commas between steps)`,
   },
   /* */
   {
     type: 'input',
     name: 'usage',
-    message: `What are the Project's usage instruction?\n(Please use commas between steps)`,
+    message: `What are the Project's usage instruction?\n\x1b[36m(Please use commas between steps)`,
   },
   {
     type: 'input',
     name: 'collaborators',
-    message: `Who else collaborated on this project?\n(Please use commas between person)`,
+    message: `Who else collaborated on this project?\n\x1b[36m(Please use commas between person)`,
   },
   {
     type: 'input',
     name: 'thirdPartyAssets',
-    message: `What third party assets were used in this project?\n(Please use commas between assets)`,
+    message: `What third party assets were used in this project?\n\x1b[36m(Please use commas between assets)`,
   },
   {
     type: 'input',
     name: 'tutorials',
-    message: `What tutorials were referenced in this project?\n(Please use commas between references)`,
+    message: `What tutorials were referenced in this project?\n\x1b[36m(Please use commas between references)`,
   },
   {
     type: 'input',
     name: 'features',
-    message: `Please list special features in this project?\n(Please use commas between features)`,
+    message: `Please list special features in this project?\n\x1b[36m(Please use commas between features)`,
   },
   {
     type: 'input',
     name: 'contributions',
-    message: `Please explain how other may make contributions to this project?\n(Please use commas between instructions)`,
+    message: `Please explain how other may make contributions to this project?\n\x1b[36m(Please use commas between instructions)`,
   },
   {
     type: 'input',
     name: 'tests',
-    message: `Please list tests for this project?\n(Please use commas between tests)`,
+    message: `Please list tests for this project?\n\x1b[36m(Please use commas between tests)`,
   },
   {
     type: 'input',
     name: 'projQuestions',
-    message: `Please list questions for this project?\n(Please use commas between questions)`,
+    message: `Please list questions for this project?\n\x1b[36m(Please use commas between questions)`,
   },
   /**/
 ];
