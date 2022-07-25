@@ -19,8 +19,7 @@
       - [Contacts](#contacts)
   
   ## Installation
-  ---
-  
+    
   Installation Instructions:
 - Fork/Clone the project to your directory
 - Use the command line to get to the directory (i.e. `cd ./[your directory]` )
@@ -28,8 +27,7 @@
 </p>
   
   ## Usage
-  ---
-  
+    
   Usage Instructions:
 - Use the command line to get to the directory (`cd ./[your directory]` 
 - Enter `node index.js` in the command line to run the Javascript file
@@ -41,8 +39,7 @@
 A screencast of the application has been done and is available at[Link to screencast](https://drive.google.com/file/d/1rhOAgxogo42V0Wyse_JN_mNCW3XNzuVA/view) 
   
   ## Credits
-  ---
-
+  
   Languages
 - JavaScript
 - Node JS
@@ -63,15 +60,13 @@ A screencast of the application has been done and is available at[Link to screen
 </p>
   
   ## License
-  ---
-  
+    
   This application is licensed under Creative Commons
 
   CC0
   
   ## Features
-  ---
-  
+    
 - Badges for licenses are included in the description
 - The contents items are hyperlinked to their headings
 -  Sections are left in even if empty - in case user wants to manually add information later
@@ -80,21 +75,18 @@ A screencast of the application has been done and is available at[Link to screen
 </p>
   
   ### Contributions
-  ---
-  
+    
   Contribution guidelines: As this is a student program it is unlikely to be continued- however please see contact detail below if you want to get in touch with developer
  
   
   ## Questions
-  ---
-  
+    
 - Why is project name added to the ReadMe filename?<br>*This is because the program is used to create ReadMe's for a variety of projects and this might cause overwriting of other projects' files*
 - Are there future fixes you might want to add?<br>*We would like to make the license badges more complex with a choice of badge within organisation. We have the data but need to break up the questions and this will create a lot more complexity*
 </p>
   
   ### Contacts
-  ---
-  
+    
   You can reach me for additional questions at:
   [rschragger GitHub page](https://github.com/rschragger)
 

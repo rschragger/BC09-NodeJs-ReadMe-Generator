@@ -74,18 +74,15 @@ function createFileText(answers) {
       - [Contacts](#contacts)
   
   ## Installation
-  ---
-  
+   
   ${lister(answers.installationInst, "Installation Instructions:")}
   
   ## Usage
-  ---
-  
+   
   ${lister(answers.usage, "Usage Instructions:")}
   
   ## Credits
-  ---
-  
+   
   ${lister(answers.collaborators, "Collaborators")}
 
   ${lister(answers.languagesListed.toString().replace('Other', '') + lister(answers.languagesListedOther,''), "Languages")}
@@ -95,32 +92,26 @@ function createFileText(answers) {
   ${lister(answers.tutorials, "Tutorials")}
   
   ## License
-  ---
-  
+   
   This application is licensed under ${answers.licenseOrg}\n
   ${licInfo[answers.licenseOrg][0].licenseName}
   
   ## Features
-  ---
-  ${lister(answers.features, '')}
+   ${lister(answers.features, '')}
   
   ### Contributions
-  ---
-  
+   
   ${lister(answers.contributions, "Contribution guidelines:")}
   
   ## Tests
-  ---
-
+  
   ${lister(answers.tests, '')}
   
   ## Questions
-  ---
-  ${lister(answers.projQuestions, '')}
+   ${lister(answers.projQuestions, '')}
   
   ### Contacts
-  ---
-  
+   
   You can reach me for additional questions at:
   [${answers.gitHubID} GitHub page](https://github.com/${answers.gitHubID})
 
