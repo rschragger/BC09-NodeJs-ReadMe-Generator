@@ -111,6 +111,7 @@ function createFileText(answers) {
   
   ## Tests
   ---
+
   ${lister(answers.tests, '')}
   
   ## Questions
@@ -122,7 +123,12 @@ function createFileText(answers) {
   
   You can reach me for additional questions at:
   [${answers.gitHubID} GitHub page](https://github.com/${answers.gitHubID})
-`
+
+  
+  <div class="footer" style="text-align:right; font-size:smaller"><hr>
+  &copy; Copyright ${(new Date(Date.now())).getFullYear()} ${answers.fullName}
+</div>  `
+
 }
 
 // TODO: Create an array of questions for user input
@@ -172,7 +178,6 @@ const questions = [
     name: 'installationInst',
     message: `What are the Project's installation instruction?\n\x1b[36m(Please use commas between steps)`,
   },
-  /* */
   {
     type: 'input',
     name: 'usage',
@@ -196,24 +201,24 @@ const questions = [
   {
     type: 'input',
     name: 'features',
-    message: `Please list special features in this project?\n\x1b[36m(Please use commas between features)`,
+    message: `Please list special features in this project\n\x1b[36m(Please use commas between features)`,
   },
   {
     type: 'input',
     name: 'contributions',
-    message: `Please explain how other may make contributions to this project?\n\x1b[36m(Please use commas between instructions)`,
+    message: `Please explain how other may make contributions to this project\n\x1b[36m(Please use commas between instructions)`,
   },
   {
     type: 'input',
     name: 'tests',
-    message: `Please list tests for this project?\n\x1b[36m(Please use commas between tests)`,
+    message: `Please list tests for this project\n\x1b[36m(Please use commas between tests)`,
   },
   {
     type: 'input',
     name: 'projQuestions',
-    message: `Please list questions for this project?\n\x1b[36m(Please use commas between questions)`,
-  },
-  /**/
+    message: `Please list questions for this project\n\x1b[36m(Please use commas between questions)`,
+  }
+  
 ];
 
 // TODO: Create a function to write README file
@@ -239,11 +244,13 @@ function writeToFile(answers) {
     .then((confirm) => {
       open(filename);
 
-      /* fs.open does not work as expected, used npm 'open' from https://stackoverflow.com/questions/62150879/fs-open-does-not-open-desired-file-in-nodejs
+      /* fs.open does not work as expected, 
+      used npm 'open' from https://stackoverflow.com/questions/62150879/fs-open-does-not-open-desired-file-in-nodejs
       //console.log('openFileYN: ' + confirm.openFileYN)
       if (confirm.openFileYN === true) {
         fs.open(filename, 'rs+', function (err, f) { console.log('error: ' + err); });
-      }*/
+      }
+      */
     })}
 
 }
