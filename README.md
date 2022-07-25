@@ -25,6 +25,8 @@
 - Use the command line to get to the directory (i.e. `cd ./[your directory]` )
 -  Run `npm install` to install all the packages
 </p>
+
+Project is located at [github.com/rschragger/BC09-NodeJs-ReadMe-Generator](https://github.com/rschragger/BC09-NodeJs-ReadMe-Generator)
   
   ## Usage
    
