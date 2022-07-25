@@ -4,6 +4,8 @@ Reeve Schragger
 
 rschragger
 
+reeveschragger@gmail.com
+
 BC09-NodeJs-ReadMe-Generator
 
 This project uses Node JS to write a comprehensive ReadMe file for a project from a series of prompts to the user. If a user doesn't enter a reply, the ReadMe will still leave a section so that the information can be written in manually later if necessary.

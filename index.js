@@ -113,7 +113,9 @@ function createFileText(answers) {
   ### Contacts
    
   You can reach me for additional questions at:
-  [${answers.gitHubID} GitHub page](https://github.com/${answers.gitHubID})
+  - Email: [${answers.email}](mailto:${answers.email})
+
+  - GitHub: [${answers.gitHubID} GitHub page](https://github.com/${answers.gitHubID})
 
   
   <div class="footer" style="text-align:right; font-size:smaller"><hr>
@@ -133,6 +135,11 @@ const questions = [
     type: 'input',
     name: 'gitHubID',
     message: 'What is your GitHub ID?\n\x1b[36m(just the ID only please)',
+  },
+  {
+    type: 'input',
+    name: 'email',
+    message: 'What is your contact email address?',
   },
   {
     type: 'input',
